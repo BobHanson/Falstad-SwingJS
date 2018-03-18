@@ -1,0 +1,14 @@
+<project name="zip" default="toJs" basedir=".">
+ 
+   <target name="toJs" id="toJs">
+  			
+   	
+   	<echo>creating Falstad_site.zip </echo>
+   	<zip destfile="Falstad_site.zip" basedir="." includes="site/**" />
+   	
+  </target>
+
+
+		
+	
+</project>
