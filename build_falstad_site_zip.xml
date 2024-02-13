@@ -4,7 +4,7 @@
   			
    	
    	<echo>creating Falstad_site.zip </echo>
-   	<zip destfile="Falstad_site.zip" basedir="." includes="site/**" />
+   	<zip destfile="dist/Falstad_site.zip" basedir="." includes="site/**" />
    	
   </target>
 
