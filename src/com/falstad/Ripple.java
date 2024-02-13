@@ -197,7 +197,7 @@ public class Ripple extends Applet implements ComponentListener {
 	  addComponentListener(this);
 	}
 
-	public static void main(String args[]) {
+	final public static void main(String args[]) {
 		Ripple ripple = new Ripple();
 		ripple.showFrame();
 	}
@@ -344,7 +344,7 @@ class RippleFrame extends Frame implements ComponentListener, ActionListener,
 	Color wallColor, posColor, negColor, zeroColor, medColor, posMedColor,
 			negMedColor, sourceColor;
 	Color schemeColors[][];
-	Method timerMethod;
+	//Method timerMethod;
 	int timerDiv;
 	ImportDialog impDialog;
 	static final int mediumMax = 191;
@@ -448,25 +448,25 @@ class RippleFrame extends Frame implements ComponentListener, ActionListener,
 		// note: jvf will be 0 for JavaScript
 		if (jvf >= 48)
 			useBufferedImage = true;
-
-		/**
-		 * @j2sIgnore
-		 * 
-		 */
-		{
-			try {
-				Class sysclass = Class.forName("java.lang.System");
-				timerMethod = sysclass.getMethod("nanoTime", null);
-				timerDiv = 1000000;
-				if (timerMethod == null) {
-					timerMethod = sysclass.getMethod("currentTimeMillis", null);
-					timerDiv = 1;
-				}
-			} catch (Exception ee) {
-				ee.printStackTrace();
-			}
-		}
-
+//
+//		/**
+//		 * @j2sIgnore
+//		 * 
+//		 */
+//		{
+//			try {
+//				Class sysclass = Class.forName("java.lang.System");
+//				timerMethod = sysclass.getMethod("nanoTime", null);
+//				timerDiv = 1000000;
+//				if (timerMethod == null) {
+//					timerMethod = sysclass.getMethod("currentTimeMillis", null);
+//					timerDiv = 1;
+//				}
+//			} catch (Exception ee) {
+//				ee.printStackTrace();
+//			}
+//		}
+//
 		sources = new OscSource[20];
 		main.setLayout(new RippleLayout());
 		cv = new RippleCanvas(this);
@@ -817,20 +817,7 @@ class RippleFrame extends Frame implements ComponentListener, ActionListener,
 	}
 
 	long getTimeMillis() {
-		try {
-			/**
-			 * @j2sNative
-			 * 
-			 *            return System.currentTimeMillis();
-			 */
-			{
-				Long time = (Long) timerMethod.invoke(null, new Object[] {});
-				return time.longValue() / timerDiv;
-			}
-		} catch (Exception ee) {
-			ee.printStackTrace();
-			return 0;
-		}
+		return System.currentTimeMillis();
 	}
 
 	void calcExceptions() {

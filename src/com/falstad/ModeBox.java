@@ -623,18 +623,17 @@ class ModeBoxFrame extends Frame implements ComponentListener, ActionListener,
 
 	public void updateModeBox(Graphics realg) {
 		
-		
-		/**
-		 * @j2sNative
-		 *  document.title = System.currentTimeMillis() - (this.lastTime || 0);
-		 *  this.lastTime = System.currentTimeMillis();
-		 */
-		{
-			System.out.println(System.currentTimeMillis() - this.lastTime);
-			this.lastTime = System.currentTimeMillis();
-			
-		}
-		
+//		long t = System.currentTimeMillis();
+//		/**
+//		 * @j2sNative
+//		 *  document.title = t - (this.lastTime || 0);
+//		 */
+//		{
+//			System.out.println(System.currentTimeMillis() - this.lastTime);
+//			
+//		}
+//		this.lastTime = System.currentTimeMillis();
+//		
 		Graphics g = null;
 		if (winSize == null || winSize.width == 0 || winSize.height == 0)
 			return;
